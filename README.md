@@ -32,7 +32,7 @@ nginx
 -----
 ```bash
 # nginx container SSH
-docker exec -it gyro-nginx-container /bin/sh
+docker exec -it devenv-nginx-container /bin/sh
 # restart nginx service 
 docker-compose restart nginx-service
 # rebuild nginx service to update SSL keys
@@ -43,7 +43,7 @@ php
 ---
 ```bash
 # php container SSH
-docker exec -it gyro-php81-container bash
+docker exec -it devenv-php81-container bash
 ```
 
 mysql
@@ -61,17 +61,3 @@ License
 
 This software is published under the [MIT License](LICENSE.md)
 
-
-
-[//]: # (##)
-
-[//]: # (# Run server)
-
-[//]: # (docker-compose up -d --build)
-
-[//]: # ()
-[//]: # (# Setup EasyAdmin demo app)
-
-[//]: # (docker exec -it gyro-php81-container bash)
-
-[//]: # (#composer create-project easyCorp/easyadmin-demo .)
