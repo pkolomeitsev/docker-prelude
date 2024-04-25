@@ -1,0 +1,73 @@
+services:
+    # nginx
+    nginx-service:
+#        image: nginx:stable-alpine
+        build:
+            context: .
+            dockerfile: docker/nginx/Dockerfile
+        container_name: devenv-nginx-container
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./apps:/var/www/apps
+            - ./nginx/conf.d:/etc/nginx/conf.d
+            - ./nginx/ssl-params.conf:/etc/nginx/ssl-params.conf
+        depends_on:
+            - php81-service
+            - mysql8-service
+        networks:
+            - devenv
+    # php
+    php81-service:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+        container_name: devenv-php81-container
+        ports:
+            - "9000:9000"
+        volumes:
+            - ./apps:/var/www/apps
+        networks:
+            - devenv
+    # mysql
+    mysql8-service:
+        image: mysql:8
+        container_name: devenv-mysql8-container
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./mysql:/var/lib/mysql
+        command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        restart: always # always restart unless stopped manually
+        environment:
+            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_PASSWORD: secret
+        networks:
+            - devenv
+    # node
+#    node-service:
+#        image: node:latest
+#        container_name: devenv-node-container
+#        ports:
+#            - 3000:3000
+#        volumes:
+#            - ./apps:/var/www/apps
+#        working_dir: /var/www/apps
+#        networks:
+#            - devenv
+    # phpMyAdmin
+    phpmyadmin:
+        depends_on:
+            - mysql8-service
+        image: phpmyadmin/phpmyadmin
+        container_name: devenv-phpmyadmin
+        ports:
+            - 8081:80
+        environment:
+            - PMA_HOST=mysql8-service
+            - PMA_PORT=3306
+        networks:
+            - devenv
+networks:
+    devenv:
