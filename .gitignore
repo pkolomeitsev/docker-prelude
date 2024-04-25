@@ -1,3 +1,9 @@
+apps/*
+!apps/default
+
+nginx/conf.d/*
+!nginx/conf.d/localhost.conf
+
 .idea/
 
 # Created by https://www.toptal.com/developers/gitignore/api/netbeans,phpstorm,sublimetext
