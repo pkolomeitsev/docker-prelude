@@ -1,5 +1,4 @@
 Docker development environment (PHP, MySQL, NGINX)
-==================================================
 
 ![Docker development environment](doc/images/adminp.png)
 
