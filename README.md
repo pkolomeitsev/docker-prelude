@@ -1,8 +1,6 @@
 Docker development environment (PHP, MySQL, NGINX)
 ==================================================
 
-![Docker development environment](doc/images/adminp.png)
-
 #### Installation process
 
 ```bash
@@ -20,6 +18,19 @@ Docker development environment (PHP, MySQL, NGINX)
 ```
 
 After than visit Admin Panel http://localhost/ to see new projects available
+
+![Docker development environment](doc/images/adminp.png)
+
+Project structure
+----------------
+```
+apps/
+--/default <-- admin panal dir
+--/mysite.local <-- custom site dir
+
+nginx/
+--/conf.d <-- stores generated nginx .conf files
+```
 
 phpMyAdmin
 ----------
@@ -56,7 +67,6 @@ mysql -h127.0.0.1 -uroot -p [secret]
 ```
 
 Well done.
-
 
 License
 -------
