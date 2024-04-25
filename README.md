@@ -1,6 +1,8 @@
 Docker development environment (PHP, MySQL, NGINX)
 ==================================================
 
+![Docker development environment](doc/images/adminp.png)
+
 #### Installation process
 
 ```bash
@@ -11,7 +13,7 @@ Docker development environment (PHP, MySQL, NGINX)
 ./build.sh --status
 
 # 3. Install new project
-./build.sh -s mysite.local
+./build.sh -s mysite.local -h
 
 # See more details about build script
 ./build.sh --help
