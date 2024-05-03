@@ -66,6 +66,20 @@ mysql
 mysql -h127.0.0.1 -uroot -p [secret]
 ```
 
+PHP multiversion control
+------------------------
+By default Admin Panel application use PHP latest version see `./nginx/conf.d/localhost.conf`:
+```
+    location ~ \.php$ {
+        # when using PHP-FPM as a unix socket
+        fastcgi_pass phplatest-service:9000;
+        ....
+    }
+```
+Where `phplatest-service` is Docker service name see `./docker-compose.yml`.
+Take it as example to add new PHP services for each version and don't forget to update appropriate nginx config for your
+site `./nginx/conf.d/*`.
+
 Well done.
 
 License
