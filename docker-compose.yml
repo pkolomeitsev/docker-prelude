@@ -1,7 +1,6 @@
 services:
     # nginx
     nginx-service:
-#        image: nginx:stable-alpine
         build:
             context: .
             dockerfile: docker/nginx/Dockerfile
@@ -23,6 +22,10 @@ services:
         build:
             context: .
             dockerfile: docker/php/Dockerfile
+            args:
+                # set host user UID and GID, to create non-sudo user
+                UID: ${HOST_UID:-1000}
+                GID: ${HOST_GID:-1000}
         container_name: devenv-php81-container
         ports:
             - "9000:9000"

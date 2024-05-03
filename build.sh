@@ -15,6 +15,10 @@ NGINX_SERVICE_NAME='nginx-service'
 IP='127.0.0.1'
 ETC_HOSTS='/etc/hosts'
 
+# host user data settings for container non-sudo user
+HOST_UID=$(id -u)
+HOST_GID=$(id -g)
+
 help() {
   echo "./build.sh allowed options:"
   echo "  -s|--site <site_name> this will create <site_name> directory in ./apps/<site_name> with index.php file"
@@ -37,6 +41,8 @@ help() {
 while [[ $# -gt 0 ]]; do
   case $1 in
     --all)
+      export HOST_UID
+      export HOST_GID
       docker-compose up -d --build
       exit 1
       ;;
@@ -146,6 +152,6 @@ echo "Please visit your site -> http://$SITE/ or https://$SITE/"
 #
 # @author p.kolomeitsev@gmail.com
 # @site https://pkolomeitsev.blogspot.com
-# @github https://github.com/pkolomeitsev
+# @github https://github.com/pkolomeitsev/docker-dev-env
 #
 
