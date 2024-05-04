@@ -14,21 +14,33 @@ services:
             - ./nginx/ssl-params.conf:/etc/nginx/ssl-params.conf
         depends_on:
             - php81-service
+            - phplatest-service
             - mysql8-service
         networks:
             - devenv
     # php
+    phplatest-service:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile-latest
+            args:
+                # set host user UID and GID, to create non-sudo user
+                UID: ${HOST_UID:-1000}
+                GID: ${HOST_GID:-1000}
+        container_name: devenv-phplatest-container
+        volumes:
+            - ./apps:/var/www/apps
+        networks:
+            - devenv
     php81-service:
         build:
             context: .
-            dockerfile: docker/php/Dockerfile
+            dockerfile: docker/php/Dockerfile-php81
             args:
                 # set host user UID and GID, to create non-sudo user
                 UID: ${HOST_UID:-1000}
                 GID: ${HOST_GID:-1000}
         container_name: devenv-php81-container
-        ports:
-            - "9000:9000"
         volumes:
             - ./apps:/var/www/apps
         networks:
