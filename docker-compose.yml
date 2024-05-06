@@ -13,7 +13,6 @@ services:
             - ./nginx/conf.d:/etc/nginx/conf.d
             - ./nginx/ssl-params.conf:/etc/nginx/ssl-params.conf
         depends_on:
-            - php81-service
             - phplatest-service
             - mysql8-service
         networks:
@@ -84,5 +83,13 @@ services:
             - PMA_PORT=3306
         networks:
             - devenv
+    # MailHog
+    mailhog:
+        image: mailhog/mailhog
+        container_name: devenv-mailhog
+        ports:
+            - '1025:1025' # smtp server
+            - '8025:8025' # web ui
+
 networks:
     devenv:
