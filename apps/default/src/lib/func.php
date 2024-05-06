@@ -32,6 +32,7 @@ function getAppList()
 {
     return [
         'phpMyAdmin' => 'http://localhost:8081/',
+        'MailHog' => 'http://localhost:8025/',
         'phpinfo()' => 'http://localhost/phpinfo.php'
     ];
 }
