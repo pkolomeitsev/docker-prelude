@@ -94,7 +94,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-# if empty site, do nothing
+# if empty site, show help
 if [ -z $SITE ]
 then
   help
