@@ -34,12 +34,15 @@ nginx/
 
 phpMyAdmin
 ----------
-
 PhpMyAdmin panel has link -> http://localhost:8081/
 ```
 Login: root
 Password: secret
 ```
+
+MailHog
+----------
+MailHog UI link ->http://localhost:8025/
 
 nginx
 -----
@@ -56,7 +59,7 @@ php
 ---
 ```bash
 # php container SSH
-docker exec -it devenv-php81-container bash
+docker exec -it devenv-phplatest-container bash
 ```
 
 mysql
