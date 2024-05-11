@@ -3,7 +3,7 @@
 <html lang="en" class="h-100" data-bs-theme="auto">
 <head>
     <meta charset="utf-8">
-    <title>Docker dev-env</title>
+    <title>Docker-Dev-Env</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
@@ -11,7 +11,7 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Welcome to the "Docker dev-env" Admin Panel!</a>
+            <a class="navbar-brand" href="#">Welcome to the "Docker-Dev-Env" Admin Panel!</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor04"
                     aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
