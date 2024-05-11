@@ -28,4 +28,4 @@ RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | b
 RUN apt install symfony-cli
 
 # set non-sudo user user as the default user
-USER phpdev
+USER $USERNAME
