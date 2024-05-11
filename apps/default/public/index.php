@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Docker dev-env</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 </head>
 <body class="d-flex flex-column h-100">
 <header>
@@ -16,7 +16,15 @@
                     aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-        </div>
+            <div class="collapse navbar-collapse" id="navbarColor04">
+                <ul class="navbar-nav ms-md-auto ">
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="https://github.com/pkolomeitsev/docker-dev-env">
+                            <img src="assets/imgs/github.png" height="16" alt="GitHub"> GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
     </nav>
 </header>
 
@@ -42,6 +50,9 @@
         <h2 class="mt-3">Apps</h2>
 
         <?php
+        /**
+         * Render application links
+         */
         foreach (getAppList() as $app => $uri) {
             echo sprintf('<a href="%s" class="btn btn-lg btn-primary" role="button" target="_blank">%s</a>', $uri, $app) . PHP_EOL;
         }
