@@ -6,8 +6,8 @@ services:
             dockerfile: docker/nginx/Dockerfile
         container_name: devenv-nginx-container
         ports:
-            - "80:80"
-            - "443:443"
+            - 80:80
+            - 443:443
         volumes:
             - ./apps:/var/www/apps
             - ./nginx/conf.d:/etc/nginx/conf.d
@@ -29,6 +29,7 @@ services:
         container_name: devenv-phplatest-container
         volumes:
             - ./apps:/var/www/apps
+            - ./php/configs/php-latest.ini:/usr/local/etc/php/php.ini
         networks:
             - devenv
     php81-service:
@@ -42,6 +43,7 @@ services:
         container_name: devenv-php81-container
         volumes:
             - ./apps:/var/www/apps
+            - ./php/configs/php-81.ini:/usr/local/etc/php/php.ini
         networks:
             - devenv
     # mysql
@@ -49,7 +51,7 @@ services:
         image: mysql:8
         container_name: devenv-mysql8-container
         ports:
-            - "3306:3306"
+            - 3306:3306
         volumes:
             - ./mysql:/var/lib/mysql
         command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
@@ -88,8 +90,10 @@ services:
         image: mailhog/mailhog
         container_name: devenv-mailhog
         ports:
-            - '1025:1025' # smtp server
-            - '8025:8025' # web ui
+            - 1025:1025 # smtp server
+            - 8025:8025 # web ui
+        networks:
+            - devenv
 
 networks:
     devenv:
