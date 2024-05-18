@@ -42,7 +42,12 @@ Password: secret
 
 MailHog
 ----------
-MailHog UI link ->http://localhost:8025/
+MailHog UI link -> http://localhost:8025/
+
+> See `sendmail_path` configuration in `./php/configs/php-latest.ini` file  
+> `sendmail_path = "/usr/local/bin/mhsendmail --smtp-addr=mailhog:1025"`
+
+It is possible to send test e-mail message by http://localhost/sendmail.php script 
 
 nginx
 -----
