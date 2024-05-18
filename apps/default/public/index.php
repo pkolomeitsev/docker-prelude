@@ -113,7 +113,7 @@
 
 <footer class="footer mt-auto py-3 bg-body-tertiary">
     <div class="container">
-        <span class="text-body-secondary">&copy; 2024 All rights reserved - your localhost </span>
+        <span class="text-body-secondary">&copy; <?php echo date("Y"); ?> All rights reserved - your localhost </span>
     </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
