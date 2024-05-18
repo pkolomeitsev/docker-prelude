@@ -10,6 +10,11 @@ RUN apt update \
     && adduser --uid $UID --gid $GID --disabled-password --gecos "" $USERNAME \
     && echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+# install mhsendmail for MailHog integration
+RUN apt update \
+    && apt install -y golang-go \
+    && go install github.com/mailhog/mhsendmail@latest \
+    && ln ~/go/bin/mhsendmail /usr/local/bin/mhsendmail
 
 RUN apt update && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev zip \
     && docker-php-ext-install intl opcache pdo pdo_mysql \
