@@ -32,20 +32,15 @@ function getAppList()
 {
     return [
         'phpMyAdmin' => 'http://localhost:8081/',
+        'MailHog' => 'http://localhost:8025/',
         'phpinfo()' => 'http://localhost/phpinfo.php'
     ];
 }
 
 function convert($size)
 {
-    $unit = array('B', 'Kb', 'M', 'Gb', 'Tb', 'Pb');
+    $unit = ['B', 'Kb', 'M', 'Gb', 'Tb', 'Pb'];
     return @round($size / pow(1024, ($i = floor(log($size, 1024)))), 2) . '' . $unit[$i];
-}
-
-function getPhpMyAdminInfo()
-{
-    $mysqlService = 'phpmyadmin';
-//    docker - compose run phpmyadmin php - v
 }
 
 function getListOfTheProjects()

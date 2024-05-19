@@ -34,12 +34,20 @@ nginx/
 
 phpMyAdmin
 ----------
-
 PhpMyAdmin panel has link -> http://localhost:8081/
 ```
 Login: root
 Password: secret
 ```
+
+MailHog
+----------
+MailHog UI link -> http://localhost:8025/
+
+> See `sendmail_path` configuration in `./php/configs/php-latest.ini` file  
+> `sendmail_path = "/usr/local/bin/mhsendmail --smtp-addr=mailhog:1025"`
+
+It is possible to send test e-mail message by http://localhost/sendmail.php script 
 
 nginx
 -----
@@ -56,7 +64,7 @@ php
 ---
 ```bash
 # php container SSH
-docker exec -it devenv-php81-container bash
+docker exec -it devenv-phplatest-container bash
 ```
 
 mysql
