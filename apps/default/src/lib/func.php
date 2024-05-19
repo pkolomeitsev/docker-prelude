@@ -27,13 +27,17 @@ function getNginxInfo()
     ];
 }
 
-
+/**
+ * List of the applications available to make your life easier
+ * @return string[]
+ */
 function getAppList()
 {
     return [
         'phpMyAdmin' => 'http://localhost:8081/',
         'MailHog' => 'http://localhost:8025/',
-        'phpinfo()' => 'http://localhost/phpinfo.php'
+        'phpinfo()' => 'http://localhost/phpinfo.php',
+        'Test E-mail' => 'http://localhost/sendmail.php'
     ];
 }
 

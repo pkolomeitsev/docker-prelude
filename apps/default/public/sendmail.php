@@ -1,3 +1,4 @@
+<?php require_once '../src/lib/func.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -16,7 +17,7 @@
     $subject = 'Hey, I\'m MailHog test! ' . time();
     $body = 'Hello, MailHog world!';
 
-    # from PHP 7.2.0 compatible
+    # from PHP 7.2+ compatible
     $headers = [
         'From' => sprintf('sender <%s>', $from),
         'Cc' => sprintf('cc <%s>', $cc),
@@ -32,6 +33,10 @@
     }
 
     ?>
+</p>
+<p>
+    <?php $mailHogLink = getAppList()['MailHog'] ?? '#fixme'; ?>
+    Check result -> <a href="<?php echo $mailHogLink; ?>" target="_blank">MailHog</a>
 </p>
 </body>
 </html>
