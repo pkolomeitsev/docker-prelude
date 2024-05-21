@@ -30,6 +30,9 @@ services:
         volumes:
             - ./apps:/var/www/apps
             - ./php/configs/php-latest.ini:/usr/local/etc/php/php.ini
+            - ./php/configs/xdebug3.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+        extra_hosts:
+            - host.docker.internal:${HOST_IP:-172.17.0.1}
         networks:
             - devenv
     php81-service:

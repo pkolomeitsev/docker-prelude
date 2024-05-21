@@ -97,7 +97,7 @@ browser extension.
    - Set IDE key to PHPSTORM
    - Enable debugging
 2. Install PhpStorm
-   - Check `Settings > PHP > Debug > Debug port` should be `9003`
+   - Check `Settings > PHP > Debug > Debug port` should have `9003`
    - Add server with site host configuration to `Settings > PHP > Servers`
      - additionally add mapping to Server path `/var/www/apps/<mysite.local>`
    - Add [PHP Remote Debug](https://www.jetbrains.com/help/phpstorm/2023.3/run-debug-configuration-php-remote-debug.html) configuration with proper `IDE key` and `Server` selected
