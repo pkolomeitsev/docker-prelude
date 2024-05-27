@@ -1,10 +1,10 @@
 <?php
 
-require_once '../vendor/autoload.php';
+require_once '../../vendor/autoload.php';
 
 use App\Builders\ConfigBuilder;
 
-$projectRoot = __DIR__ . '/../../';
+$projectRoot = __DIR__ . '/../../../';
 $config = ConfigBuilder::build($projectRoot);
 
 ?>
