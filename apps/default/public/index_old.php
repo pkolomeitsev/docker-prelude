@@ -28,6 +28,11 @@ $config = ConfigBuilder::build($projectRoot);
             <div class="collapse navbar-collapse" id="navbarColor04">
                 <ul class="navbar-nav ms-md-auto ">
                     <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            New UI
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" target="_blank" href="https://github.com/pkolomeitsev/docker-dev-env">
                             <img src="assets/imgs/github.png" height="16" alt="GitHub"> GitHub
                         </a>
