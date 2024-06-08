@@ -41,6 +41,16 @@ Login: root
 Password: secret
 ```
 
+Redis GUI
+----------
+Redis database user interface available at -> http://localhost:5540/
+Based on Redis Insight image.
+```
+# use Redis host:port
+redis-service:6379
+```
+
+
 MailHog
 ----------
 MailHog UI link -> http://localhost:8025/
