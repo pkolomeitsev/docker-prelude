@@ -78,6 +78,28 @@ services:
 #        working_dir: /var/www/apps
 #        networks:
 #            - devenv
+    # redis
+    redis-service:
+        image: redis:7.0.0
+        container_name: devenv-redis-container
+        volumes:
+            - ./redis/data:/data
+        ports:
+            - 6379:6379
+        networks:
+            - devenv
+    # redis GUI
+    redisinsight:
+        depends_on:
+            - redis-service
+        image: redislabs/redisinsight:latest
+        container_name: devenv-redisinsight
+        ports:
+            - 5540:5540
+        volumes:
+            - ./redis/redisinsight:/data
+        networks:
+            - devenv
     # phpMyAdmin
     phpmyadmin:
         depends_on:
