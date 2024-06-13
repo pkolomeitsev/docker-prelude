@@ -69,13 +69,11 @@ while [[ $# -gt 0 ]]; do
       ;;
     -g|--git)
       GIT=1
-      shift # past argument
-      shift # past value
+      shift # past argument only
       ;;
     -h|--host)
       HOST=1
-      shift # past argument
-      shift # past value
+      shift # past argument only
       ;;
     --help)
       help
