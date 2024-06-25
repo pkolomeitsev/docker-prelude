@@ -140,12 +140,11 @@ $config = ConfigBuilder::build($projectRoot);
             redirect()
         });
         document.getElementById('httpsBtn').addEventListener('click', function (ev) {
-            redirect(true)
+            redirect('https://')
         });
 
-        function redirect(ssl = false) {
+        function redirect(protocol = 'http://') {
             let project = document.getElementById("projects").value;
-            let protocol = (ssl) ? 'https://' : 'http://';
 
             window.open(
                 protocol + project,
