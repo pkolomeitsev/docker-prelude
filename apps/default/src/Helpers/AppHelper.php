@@ -69,7 +69,6 @@ class AppHelper
      */
     public static function getListOfTheProjects(string $dir): array
     {
-//        $dir = __DIR__ . '/../../../';
         if (!$dirStructure = scandir($dir)) {
             return [];
         }
