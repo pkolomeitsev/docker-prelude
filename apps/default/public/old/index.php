@@ -5,7 +5,7 @@ require_once '../../vendor/autoload.php';
 use App\Builders\ConfigBuilder;
 
 $projectRoot = __DIR__ . '/../../../';
-$config = ConfigBuilder::build($projectRoot);
+$config = ConfigBuilder::buildOld($projectRoot);
 
 ?>
 <!DOCTYPE html>
@@ -115,7 +115,6 @@ $config = ConfigBuilder::build($projectRoot);
                         <h1 class="card-title">v<?php echo $nginxInfo['version']; ?></h1>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li>IP: <?php echo $nginxInfo['ip']; ?></li>
-
                         </ul>
                     </div>
                 </div>
