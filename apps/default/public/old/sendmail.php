@@ -1,4 +1,4 @@
-<?php require_once '../src/lib/func.php'; ?>
+<?php require_once '../../vendor/autoload.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <body>
@@ -35,7 +35,7 @@
     ?>
 </p>
 <p>
-    <?php $mailHogLink = getAppList()['MailHog'] ?? '#fixme'; ?>
+    <?php $mailHogLink = \App\Helpers\AppHelper::getAppListOld()['MailHog'] ?? '#fixme'; ?>
     Check result -> <a href="<?php echo $mailHogLink; ?>" target="_blank">MailHog</a>
 </p>
 </body>
