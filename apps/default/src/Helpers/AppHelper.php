@@ -54,6 +54,20 @@ class AppHelper
     }
 
     /**
+     * @deprecated
+     * @return string[]
+     */
+    public static function getAppListOld(): array
+    {
+        return [
+            'phpMyAdmin' => 'http://localhost:8081/',
+            'MailHog' => 'http://localhost:8025/',
+            'phpinfo()' => 'http://localhost/old/phpinfo.php',
+            'Test E-mail' => 'http://localhost/old/sendmail.php'
+        ];
+    }
+
+    /**
      * @param int $size
      * @return string
      */

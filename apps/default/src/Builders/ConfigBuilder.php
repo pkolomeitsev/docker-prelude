@@ -15,7 +15,7 @@ class ConfigBuilder
         $nginxInfo = AppHelper::getNginxInfo();
         $mysqlInfo = AppHelper::getMysqlInfo();
         $projects = AppHelper::getListOfTheProjects($dir);
-        $appList = AppHelper::getAppList();
+        $appList = AppHelper::getAppListOld();
 
         return [
             'appName' => 'Docker-Dev-Env',
