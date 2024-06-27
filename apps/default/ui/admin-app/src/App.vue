@@ -4,7 +4,7 @@ import HomePage from './components/HomePage.vue'
 
 const API_URL = 'http://localhost/api.php'
 
-const appConfig = ref({ config: Object })
+const appConfig:any = ref({})
 const isLoading = ref(true)
 
 onMounted(async () => {
