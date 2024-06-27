@@ -5,7 +5,6 @@ import Info from './blocks/InfoBlock.vue'
 import Footer from './blocks/FooterBlock.vue'
 
 const props = defineProps(['appConfig'])
-console.log(props.appConfig)
 </script>
 
 <template>
