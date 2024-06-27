@@ -10,6 +10,7 @@ const isLoading = ref(true)
 onMounted(async () => {
   appConfig.value = await (await fetch(API_URL)).json()
   isLoading.value = false
+  document.title = appConfig.value.config.appName
 })
 </script>
 
