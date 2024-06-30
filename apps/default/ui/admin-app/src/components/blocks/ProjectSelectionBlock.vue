@@ -32,16 +32,3 @@ const projectSelected = ref('')
 </template>
 
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>
-<style lang="scss">
-.projectSelectionBlock {
-  .btn {
-    @apply relative mr-2 rounded-lg px-5 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-4;
-    &-primary {
-      @apply bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
-    }
-    &-secondary {
-      @apply bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800;
-    }
-  }
-}
-</style>

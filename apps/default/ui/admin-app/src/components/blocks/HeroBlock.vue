@@ -1,27 +1,29 @@
+<script setup lang="ts">
+import ProjectSelection from './ProjectSelectionBlock.vue'
+import ToolsNavigation from './ToolsNavigationBlock.vue'
+defineProps(['projects', 'tools'])
+</script>
 <template>
   <!--Hero-->
-  <div class="pt-24">
+  <div class="hero pt-24">
     <div class="container mx-auto flex flex-col flex-wrap items-center px-4 md:flex-row">
       <!--Left Col-->
       <div
         class="flex w-full flex-col items-start justify-center text-center md:w-2/5 md:text-left"
       >
-        <h2 class="mt-3">Projects</h2>
-        <p class="lead">Here you can select your favourite project <code>:)</code></p>
-        <button
-          class="focus:shadow-outline mx-auto my-6 transform rounded-full bg-white px-8 py-4 font-bold text-gray-800 shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:underline focus:outline-none lg:mx-0"
-        >
-          Subscribe
-        </button>
+        <ProjectSelection :projects="projects" />
       </div>
       <!--Right Col-->
       <div class="w-full py-6 text-center md:w-3/5">
         <!-- <img class="z-50 w-full md:w-4/5" src="hero.png" /> -->
       </div>
+      <div class="w-full">
+        <ToolsNavigation :tools="tools" />
+      </div>
     </div>
   </div>
-  <div class="relative -mt-12 lg:-mt-24">
-    <svg
+  <!-- <div class="relative -mt-12 lg:-mt-24">
+   <svg
       viewBox="0 0 1428 174"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -50,5 +52,10 @@
         </g>
       </g>
     </svg>
-  </div>
+  </div> -->
 </template>
+<style>
+.hero h1 {
+  @apply my-4 text-2xl font-medium leading-tight text-white;
+}
+</style>
