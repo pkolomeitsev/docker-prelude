@@ -7,7 +7,7 @@ defineProps(['headerTitle', 'bodyTitle', 'content'])
       <h4 class="my-0 text-2xl uppercase">{{ headerTitle }}</h4>
     </div>
     <div class="card-body p-4">
-      <h1 class="card-title pb-4 text-center text-4xl">{{ bodyTitle }}</h1>
+      <h1 class="card-title pb-4 text-center text-4xl font-light">{{ bodyTitle }}</h1>
       {{ content }}
       <slot name="content"></slot>
     </div>
