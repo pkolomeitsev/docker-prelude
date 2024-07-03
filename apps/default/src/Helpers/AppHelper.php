@@ -46,16 +46,23 @@ class AppHelper
     public static function getAppList(): array
     {
         return [
-            'phpMyAdmin' => 'http://localhost:8081/',
-            'MailHog' => 'http://localhost:8025/',
-            'phpinfo()' => 'http://localhost/phpinfo.php',
-            'Test E-mail' => 'http://localhost/sendmail.php'
+            'phpMyAdmin' => [
+                'url' => 'http://localhost:8081/'
+            ],
+            'mailHog' => [
+                'title' => 'MailHog',
+                'url' => 'http://localhost:8025/'
+            ],
+            'redisInsight' => [
+                'title' => 'Redis Insight',
+                'url' => 'http://localhost:5540/'
+            ]
         ];
     }
 
     /**
-     * @deprecated
      * @return string[]
+     * @deprecated
      */
     public static function getAppListOld(): array
     {
