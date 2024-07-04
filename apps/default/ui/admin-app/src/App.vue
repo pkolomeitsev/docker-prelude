@@ -9,7 +9,8 @@ const API_URL = 'http://localhost/api/config'
 const appConfig: any = ref({})
 const isLoading = ref(true)
 
-if (OldUISwitcher.isOldUI()) {
+// auto switch only for PROD (localhost)
+if (OldUISwitcher.isOldUI() && import.meta.env.PROD) {
   OldUISwitcher.redirectToOldUI()
 }
 
