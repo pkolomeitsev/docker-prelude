@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import ProjectSelection from './ProjectSelectionBlock.vue'
 import ToolsNavigation from './ToolsNavigationBlock.vue'
+import ThinkingIcon from '../icons/ThinkingIcon.vue'
 defineProps(['projects', 'tools'])
 </script>
 <template>
@@ -15,6 +16,7 @@ defineProps(['projects', 'tools'])
       </div>
       <!--Right Col-->
       <div class="w-full py-6 text-center md:w-3/5">
+        <!-- <ThinkingIcon /> -->
         <!-- <img class="z-50 w-full md:w-4/5" src="hero.png" /> -->
       </div>
       <div class="w-full">

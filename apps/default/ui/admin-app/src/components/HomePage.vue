@@ -3,14 +3,15 @@ import Navigation from './blocks/NavBlock.vue'
 import Hero from './blocks/HeroBlock.vue'
 import Info from './blocks/InfoBlock.vue'
 import Footer from './blocks/FooterBlock.vue'
+import { LocalStorageHelper } from '@/models/helper/LocalStorageHelper'
 
-const props = defineProps(['appConfig'])
+const appConfig = LocalStorageHelper.getItem('config')
 </script>
 
 <template>
   <div class="gradient">
-    <Navigation :appName="appConfig.appName" :gitHubLink="appConfig.gitHubLink" />
-    <Hero />
+    <Navigation />
+    <Hero :projects="appConfig.projects" :tools="appConfig.appList" />
   </div>
   <Info :systemInfo="appConfig.systemInfo" />
   <Footer />

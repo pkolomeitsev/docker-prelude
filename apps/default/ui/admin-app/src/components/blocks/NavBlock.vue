@@ -1,13 +1,16 @@
 <script setup lang="ts">
-defineProps(['appName', 'gitHubLink'])
-</script>
+import { LocalStorageHelper } from '@/models/helper/LocalStorageHelper'
 
+const appConfig = LocalStorageHelper.getItem('config')
+const appName = appConfig.appName
+const gitHubLink = appConfig.gitHubLink
+</script>
 <template>
   <!--Nav-->
   <nav id="header" class="fixed top-0 z-30 w-full text-white">
     <div class="container mx-auto mt-0 flex w-full flex-wrap items-center justify-between py-2">
       <div class="flex items-center pl-4">
-        <a class="text-2xl font-bold text-white no-underline hover:no-underline" href="#">
+        <a class="text-2xl font-bold text-white no-underline hover:no-underline" href="/">
           {{ appName }}
         </a>
       </div>
@@ -45,6 +48,6 @@ defineProps(['appName', 'gitHubLink'])
         </ul>
       </div>
     </div>
-    <hr class="my-0 border-b border-gray-100 py-0 opacity-25" />
+    <!-- <hr class="my-0 border-b border-gray-100 py-0 opacity-25" /> -->
   </nav>
 </template>
