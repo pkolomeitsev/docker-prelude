@@ -5,7 +5,9 @@ import Footer from './blocks/FooterBlock.vue'
 
 const API_URL = 'http://localhost/api/send-email'
 
-const response = ref({ error: { type: Number }, success: { type: Number }, msg: { type: String } })
+type messageObj = { error: { type: Number }; success: { type: Number }; msg: { type: String } }
+
+const response = ref<messageObj>()
 const isLoading = ref(false)
 
 async function SendEmail() {
@@ -13,6 +15,7 @@ async function SendEmail() {
   response.value = await (await fetch(API_URL, { method: 'POST' })).json()
   isLoading.value = false
 }
+console.log(response.value)
 </script>
 <template>
   <Navigation class="internalApp bg-gray-100" />
