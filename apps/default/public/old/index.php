@@ -28,7 +28,7 @@ $config = ConfigBuilder::buildOld($projectRoot);
             <div class="collapse navbar-collapse" id="navbarColor04">
                 <ul class="navbar-nav ms-md-auto ">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">
+                        <a class="nav-link" id="newUI" href="/">
                             New UI
                         </a>
                     </li>
@@ -140,6 +140,10 @@ $config = ConfigBuilder::buildOld($projectRoot);
         });
         document.getElementById('httpsBtn').addEventListener('click', function (ev) {
             redirect('https://')
+        });
+        document.getElementById('newUI').addEventListener('click', function (ev) {
+            localStorage.removeItem('oldUI')
+            window.location.href = 'http://localhost'
         });
 
         function redirect(protocol = 'http://') {

@@ -2,11 +2,16 @@
 import { ref, onMounted } from 'vue'
 import { RouterView } from 'vue-router'
 import { LocalStorageHelper } from './models/helper/LocalStorageHelper'
+import { OldUISwitcher } from './models/helper/OldUISwitcher'
 
 const API_URL = 'http://localhost/api/config'
 
 const appConfig: any = ref({})
 const isLoading = ref(true)
+
+if (OldUISwitcher.isOldUI()) {
+  OldUISwitcher.redirectToOldUI()
+}
 
 onMounted(async () => {
   appConfig.value = await (await fetch(API_URL)).json()

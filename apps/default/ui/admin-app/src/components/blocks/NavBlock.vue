@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { LocalStorageHelper } from '@/models/helper/LocalStorageHelper'
+import { OldUISwitcher } from '@/models/helper/OldUISwitcher'
 
 const appConfig = LocalStorageHelper.getItem('config')
 const appName = appConfig.appName
 const gitHubLink = appConfig.gitHubLink
+
+function switchToOldUI() {
+  OldUISwitcher.switchToOld()
+}
 </script>
 <template>
   <!--Nav-->
@@ -34,6 +39,7 @@ const gitHubLink = appConfig.gitHubLink
             <a
               class="hover:text-underline inline-block px-4 py-2 text-black no-underline hover:text-gray-800"
               href="#"
+              @click="switchToOldUI"
               >Old UI</a
             >
           </li>
