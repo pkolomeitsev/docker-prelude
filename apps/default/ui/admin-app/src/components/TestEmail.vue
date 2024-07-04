@@ -16,8 +16,8 @@ async function SendEmail() {
 </script>
 <template>
   <Navigation class="internalApp bg-gray-100" />
-  <section class="container mx-auto mt-14 h-full bg-white py-4">
-    <button :disabled="isLoading" class="btn btn-secondary mb-4" @click="SendEmail">
+  <section class="p-y4 container mx-auto mt-16">
+    <button :disabled="isLoading" class="btn btn-secondary mb-2" @click="SendEmail">
       <svg
         aria-hidden="true"
         role="status"
@@ -41,7 +41,7 @@ async function SendEmail() {
     <div v-if="response">
       <div
         v-if="response.success"
-        class="mb-4 rounded-lg bg-green-50 p-4 text-sm text-green-800 dark:bg-gray-800 dark:text-green-400"
+        class="rounded-lg bg-green-50 p-4 text-sm text-green-800 dark:bg-gray-800 dark:text-green-400"
         role="alert"
       >
         {{ response.msg }}
@@ -49,12 +49,14 @@ async function SendEmail() {
 
       <div
         v-if="response.error"
-        class="mb-4 rounded-lg bg-red-50 p-4 text-sm text-red-800 dark:bg-gray-800 dark:text-red-400"
+        class="rounded-lg bg-red-50 p-4 text-sm text-red-800 dark:bg-gray-800 dark:text-red-400"
         role="alert"
       >
         {{ response.msg }}
       </div>
     </div>
+  </section>
+  <section class="container mx-auto h-full bg-white py-2">
     <iframe width="100%" height="100%" src="http://localhost:8025/"></iframe>
   </section>
   <Footer />
