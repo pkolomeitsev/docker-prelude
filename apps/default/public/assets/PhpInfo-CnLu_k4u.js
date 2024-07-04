@@ -1,0 +1,1 @@
+import{o as t,c as s,a,F as o,b as e,_ as c,d as n}from"./index-TCXYfIwJ.js";const r=e("section",{class:"container mx-auto mt-14 h-full bg-white py-4"},[e("iframe",{width:"100%",height:"100%",src:"http://localhost/old/phpinfo.php"})],-1),h={__name:"PhpInfo",setup(p){return(_,l)=>(t(),s(o,null,[a(c,{class:"internalApp bg-gray-100"}),r,a(n)],64))}};export{h as default};
