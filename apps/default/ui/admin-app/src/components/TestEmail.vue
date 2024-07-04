@@ -5,7 +5,7 @@ import Footer from './blocks/FooterBlock.vue'
 
 const API_URL = 'http://localhost/api/send-email'
 
-const response = ref({})
+const response = ref({ error: { type: Number }, success: { type: Number }, msg: { type: String } })
 const isLoading = ref(false)
 
 async function SendEmail() {
