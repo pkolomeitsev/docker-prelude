@@ -26,7 +26,7 @@ for (const key in props.tools) {
     v-for="(dto, key, index) in appsInternal.getApps()"
     :to="dto.link"
     :key="index"
-    class="btn btn-light mb-2 inline-block"
+    class="btn btn-primary mb-2 inline-block"
   >
     {{ dto.title }}
   </RouterLink>
@@ -34,7 +34,7 @@ for (const key in props.tools) {
     v-for="(dto, key, index) in appsExternal.getApps()"
     :href="dto.link"
     :key="index"
-    class="btn btn-light mb-2 inline-block"
+    class="btn btn-primary mb-2 inline-block"
     target="_blank"
   >
     {{ dto.title }}
