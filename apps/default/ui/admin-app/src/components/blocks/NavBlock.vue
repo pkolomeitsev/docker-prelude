@@ -22,7 +22,7 @@ function switchToOldUI() {
       <div class="block pr-4 lg:hidden">
         <button
           id="nav-toggle"
-          class="focus:shadow-outline flex transform items-center p-1 text-pink-800 transition duration-300 ease-in-out hover:scale-105 hover:text-gray-900 focus:outline-none"
+          class="focus:shadow-outline flex transform items-center p-1 text-gray-800 transition duration-300 ease-in-out hover:scale-105 hover:text-gray-900 focus:outline-none"
         >
           <svg class="h-6 w-6 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
             <title>Menu</title>
@@ -40,16 +40,19 @@ function switchToOldUI() {
               class="hover:text-underline inline-block px-4 py-2 text-black no-underline hover:text-gray-800"
               href="#"
               @click="switchToOldUI"
-              >Old UI</a
             >
+              Old UI
+            </a>
           </li>
           <li class="mr-3">
             <a
               class="hover:text-underline inline-block px-4 py-2 text-black no-underline hover:text-gray-800"
               :href="gitHubLink"
               target="_blank"
-              >GitHub</a
             >
+              <img src="../../assets/img/github.png" class="mb-1 inline-block h-4" alt="GitHub" />
+              GitHub
+            </a>
           </li>
         </ul>
       </div>
