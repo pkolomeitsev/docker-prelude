@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import ProjectSelection from './ProjectSelectionBlock.vue'
 import ToolsNavigation from './ToolsNavigationBlock.vue'
-// import ThinkingIcon from '../icons/ThinkingIcon.vue'
 import Waves from '../animation/WaveComponent.vue'
 defineProps(['projects', 'tools'])
 </script>
@@ -16,9 +15,8 @@ defineProps(['projects', 'tools'])
         <ProjectSelection :projects="projects" />
       </div>
       <!--Right Col-->
-      <div class="w-full py-6 text-center md:w-3/5">
-        <!-- <ThinkingIcon /> -->
-      </div>
+      <div class="w-full py-6 text-center md:w-3/5"></div>
+      <!--Toolbar-->
       <div class="z-10 w-full">
         <ToolsNavigation :tools="tools" />
       </div>

@@ -1,3 +1,4 @@
+<!-- Sourced from Symfony 7 placeholder app https://symfony.com/ -->
 <template>
   <svg
     aria-hidden="true"
