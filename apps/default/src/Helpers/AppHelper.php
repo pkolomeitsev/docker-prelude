@@ -70,7 +70,8 @@ class AppHelper
             'phpMyAdmin' => 'http://localhost:8081/',
             'MailHog' => 'http://localhost:8025/',
             'phpinfo()' => 'http://localhost/old/phpinfo.php',
-            'Test E-mail' => 'http://localhost/old/sendmail.php'
+            'Test E-mail' => 'http://localhost/old/sendmail.php',
+            'Redis Insight' => 'http://localhost:5540/'
         ];
     }
 
