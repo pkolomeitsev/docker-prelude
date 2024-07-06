@@ -15,7 +15,7 @@ const version = import.meta.env.PACKAGE_VERSION
       <li>JS framework: <a href="https://vuejs.org/" target="_blank">Vue.js</a></li>
       <li>Components Styles: <a href="https://flowbite.com/" target="_blank">Flowbite</a></li>
       <li>
-        Inspired by <a href="https://symfony.com/" target="_blank">Symfony 7</a> placeholder page UI
+        Inspired by <a href="https://symfony.com/" target="_blank">Symfony 7</a> placeholder page
       </li>
     </ul>
     <p class="px-4 text-black">Version: {{ version }}</p>
