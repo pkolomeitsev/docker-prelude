@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ProjectSelection from './ProjectSelectionBlock.vue'
 import ToolsNavigation from './ToolsNavigationBlock.vue'
-import ThinkingIcon from '../icons/ThinkingIcon.vue'
+// import ThinkingIcon from '../icons/ThinkingIcon.vue'
 import Waves from '../animation/WaveComponent.vue'
 defineProps(['projects', 'tools'])
 </script>
@@ -24,10 +24,5 @@ defineProps(['projects', 'tools'])
       </div>
     </div>
   </div>
-  <section class="waves"><Waves /></section>
+  <section class="waves h-full w-full"><Waves /></section>
 </template>
-<style>
-.hero h1 {
-  @apply my-4 text-2xl font-medium leading-tight text-white;
-}
-</style>
