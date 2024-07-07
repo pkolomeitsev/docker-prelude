@@ -12,7 +12,7 @@ $app = AppFactory::create();
 $app->setBasePath('/api');
 
 $app->get('/', function (Request $request, Response $response, $args) {
-    $response->getBody()->write("Hello world!");
+    $response->getBody()->write("Welcome to Docker-Dev-Env API!");
     return $response;
 });
 
@@ -21,7 +21,8 @@ $app->get('/config', function (Request $request, Response $response, $args) {
     $response->getBody()->write(json_encode([
         'config' => ConfigBuilder::build($projectRoot)
     ]));
-    return $response;
+    return $response
+        ->withHeader('Content-Type', 'application/json');
 });
 
 $app->post('/send-email', function (Request $request, Response $response, $args) {
@@ -50,8 +51,19 @@ $app->post('/send-email', function (Request $request, Response $response, $args)
         : json_encode(['error' => 500, 'msg' => "Send test e-mail message failed!"])
     );
 
-    return $response;
+    return $response
+        ->withHeader('Content-Type', 'application/json');
+});
 
+$app->get('/php-info', function (Request $request, Response $response, $args) {
+    ob_start();
+    phpinfo();
+
+    $response->getBody()->write(ob_get_contents());
+
+    ob_end_clean();
+
+    return $response;
 });
 
 $app->run();

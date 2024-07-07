@@ -578,6 +578,10 @@ body {
     'Segoe UI Symbol';
 }
 
+.internalApp a {
+  @apply text-gray-800;
+}
+
 .hero h1 {
   @apply my-4 text-2xl font-medium leading-tight text-white;
 }
