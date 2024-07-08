@@ -18,7 +18,7 @@ Docker development environment (PHP, MySQL, NGINX)
 ```
 As alternative, it is still possible to use `docker-compose up -d` command.
 
-After than visit Admin Panel http://localhost/ to see new projects available.
+After that visit Admin Panel http://localhost/ to see new projects available.
 
 ![Docker development environment](doc/images/adminp.png)
 

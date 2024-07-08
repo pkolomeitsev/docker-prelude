@@ -582,6 +582,15 @@ body {
   @apply text-gray-800;
 }
 
+.scrollApp {
+  background-color: rgb(255 255 255 / 30%);
+  backdrop-filter: blur(30px);
+}
+
+.scrollApp a {
+  @apply text-gray-800;
+}
+
 .hero h1 {
   @apply my-4 text-2xl font-medium leading-tight text-white;
 }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { LocalStorageHelper } from '@/models/helper/LocalStorageHelper'
 import { OldUISwitcher } from '@/models/helper/OldUISwitcher'
 import CreditsBlock from './CreditsBlock.vue'
@@ -19,6 +19,20 @@ function toggleMobileMenu() {
     ? 'hidden'
     : 'visible'
 }
+
+onMounted(() => {
+  var scrollpos = window.scrollY
+  const header = document.getElementById('header')
+
+  document.addEventListener('scroll', () => {
+    scrollpos = window.scrollY
+    if (header && scrollpos > 10) {
+      header.classList.add('scrollApp')
+    } else {
+      header.classList.remove('scrollApp')
+    }
+  })
+})
 </script>
 <template>
   <!--Nav-->
