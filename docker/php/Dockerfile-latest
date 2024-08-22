@@ -1,27 +1,18 @@
 FROM php:8.3-fpm
 
-# install sudo, create a non-sudo user
-ARG UID
-ARG GID
-ARG USERNAME=phpdev
-RUN apt update \
-    && apt install -y sudo \
-    && addgroup --gid $GID $USERNAME \
-    && adduser --uid $UID --gid $GID --disabled-password --gecos "" $USERNAME \
-    && echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+RUN apt update && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev  \
+    libfreetype-dev libjpeg62-turbo-dev libpng-dev
+
+# php extentions
+RUN docker-php-ext-install intl opcache pdo pdo_mysql zip exif gd \
+    && pecl install apcu xdebug \
+    && docker-php-ext-enable apcu xdebug
 
 # install mhsendmail for MailHog integration
 RUN apt update \
     && apt install -y golang-go \
     && go install github.com/mailhog/mhsendmail@latest \
     && ln ~/go/bin/mhsendmail /usr/local/bin/mhsendmail
-
-RUN apt update && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev zip \
-    && docker-php-ext-install intl opcache pdo pdo_mysql \
-    && pecl install apcu xdebug \
-    && docker-php-ext-enable apcu xdebug \
-    && docker-php-ext-configure zip \
-    && docker-php-ext-install zip
 
 WORKDIR /var/www/apps
 
@@ -31,6 +22,16 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # install symfony cli
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
 RUN apt install symfony-cli
+
+# install sudo, create a non-sudo user
+ARG UID
+ARG GID
+ARG USERNAME=phpdev
+RUN apt update \
+    && apt install -y sudo \
+    && addgroup --gid $GID $USERNAME \
+    && adduser --uid $UID --gid $GID --disabled-password --gecos "" $USERNAME \
+    && echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # set non-sudo user user as the default user
 USER $USERNAME
