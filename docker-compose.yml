@@ -104,6 +104,14 @@ services:
             - ./redis/redisinsight:/data
         networks:
             - devenv
+    # RabbitMQ
+    rabbitmq-service:
+        image: rabbitmq:management
+        container_name: devenv-rabbitmq-container
+        ports:
+            - 15672:15672
+        networks:
+            - devenv
     # phpMyAdmin
     phpmyadmin:
         depends_on:
