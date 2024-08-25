@@ -60,6 +60,14 @@ MailHog UI link -> http://localhost:8025/
 
 It is possible to send test e-mail message from http://localhost/test-email page. 
 
+RabbitMQ
+----------
+RabbitMQ UI link -> http://localhost:15672/
+```
+Login: guest
+Password: guest
+```
+
 nginx
 -----
 ```bash
