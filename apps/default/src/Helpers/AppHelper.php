@@ -56,6 +56,10 @@ class AppHelper
             'redisInsight' => [
                 'title' => 'Redis Insight',
                 'url' => 'http://localhost:5540/'
+            ],
+            'rabbitMQ' => [
+                'title' => 'Rabbit MQ',
+                'url' => 'http://localhost:15672/'
             ]
         ];
     }
