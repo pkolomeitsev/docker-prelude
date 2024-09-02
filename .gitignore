@@ -6,6 +6,8 @@ nginx/conf.d/*
 
 .idea/
 
+docker-compose.yml
+
 # Created by https://www.toptal.com/developers/gitignore/api/netbeans,phpstorm,sublimetext
 # Edit at https://www.toptal.com/developers/gitignore?templates=netbeans,phpstorm,sublimetext
 
