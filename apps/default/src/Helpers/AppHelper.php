@@ -49,8 +49,8 @@ class AppHelper
             'phpMyAdmin' => [
                 'url' => 'http://localhost:8081/'
             ],
-            'mailHog' => [
-                'title' => 'MailHog',
+            'mailPit' => [
+                'title' => 'Mailpit',
                 'url' => 'http://localhost:8025/'
             ],
             'redisInsight' => [
