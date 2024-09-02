@@ -47,7 +47,7 @@ $app->post('/send-email', function (Request $request, Response $response, $args)
     sleep(1); // anti-DDos :)
 
     $response->getBody()->write((mail($to, $subject, $body, $headers))
-        ? json_encode(['success' => 200, 'msg' => 'Test e-mail message was successfully send'])
+        ? json_encode(['success' => 200, 'msg' => 'Test e-mail message has been successfully sent'])
         : json_encode(['error' => 500, 'msg' => "Send test e-mail message failed!"])
     );
 
