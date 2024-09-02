@@ -51,12 +51,9 @@ redis-service:6379
 ```
 
 
-MailHog
+Mailpit
 ----------
-MailHog UI link -> http://localhost:8025/
-
-> See `sendmail_path` configuration in `./php/configs/php-latest.ini` file  
-> `sendmail_path = "/usr/local/bin/mhsendmail --smtp-addr=mailhog:1025"`
+Mailpit UI link -> http://localhost:8025/
 
 It is possible to send test e-mail message from http://localhost/test-email page. 
 
@@ -85,6 +82,11 @@ php
 ```bash
 # php container SSH
 docker exec -it devenv-phplatest-container bash
+```
+**php.ini** settings update in `./php/configs/php-latest.ini` file:
+```
+sendmail_path = /usr/local/bin/mpsendmail -i -t
+memory_limit = 1024M
 ```
 
 mysql
