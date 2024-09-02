@@ -1,27 +1,5 @@
 FROM php:8.3-fpm
 
-RUN apt update && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev  \
-    libfreetype-dev libjpeg62-turbo-dev libpng-dev
-
-# php extentions
-ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
-RUN install-php-extensions intl opcache pdo pdo_mysql zip exif gd apcu xdebug amqp
-
-# install mhsendmail for MailHog integration
-RUN apt update \
-    && apt install -y golang-go \
-    && go install github.com/mailhog/mhsendmail@latest \
-    && ln ~/go/bin/mhsendmail /usr/local/bin/mhsendmail
-
-WORKDIR /var/www/apps
-
-# install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# install symfony cli
-RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
-RUN apt install symfony-cli
-
 # install sudo, create a non-sudo user
 ARG UID
 ARG GID
@@ -31,6 +9,34 @@ RUN apt update \
     && addgroup --gid $GID $USERNAME \
     && adduser --uid $UID --gid $GID --disabled-password --gecos "" $USERNAME \
     && echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+RUN apt update && apt install -y wget zlib1g-dev g++ git libicu-dev zip libzip-dev  \
+    libfreetype-dev libjpeg62-turbo-dev libpng-dev
+
+# php extentions
+ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+RUN install-php-extensions intl opcache pdo pdo_mysql zip exif gd apcu xdebug amqp
+
+# install Mailpit integration
+RUN wget https://go.dev/dl/go1.23.0.linux-amd64.tar.gz -O go.tar.gz \
+    && tar -xzvf go.tar.gz -C /usr/local \
+    && echo export PATH=$HOME/go/bin:/usr/local/go/bin:$PATH >> ~/.profile \
+    && . ~/.profile \
+    && go version \
+    && echo $MP_SENDMAIL_SMTP_ADDR \
+    && git clone --depth 1 https://github.com/axllent/mailpit.git \
+    && cd mailpit/sendmail \
+    && go build -ldflags "-s -w" \
+    && ln sendmail /usr/local/bin/mpsendmail
+
+WORKDIR /var/www/apps
+
+# install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# install symfony cli
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
+RUN apt install symfony-cli
 
 # set non-sudo user user as the default user
 USER $USERNAME

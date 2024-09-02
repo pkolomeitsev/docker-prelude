@@ -26,6 +26,8 @@ services:
                 # set host user UID and GID, to create non-sudo user
                 UID: ${HOST_UID:-1000}
                 GID: ${HOST_GID:-1000}
+        environment:
+            - MP_SENDMAIL_SMTP_ADDR=${MP_SENDMAIL_SMTP_ADDR}
         container_name: devenv-phplatest-container
         volumes:
             - ./apps:/var/www/apps
@@ -125,15 +127,22 @@ services:
             - PMA_PORT=3306
         networks:
             - devenv
-    # MailHog
-    mailhog:
-        image: mailhog/mailhog
-        container_name: devenv-mailhog
+    # Mailpit
+    mailpit:
+        image: axllent/mailpit
+        container_name: devenv-mailpit
+        restart: unless-stopped
+        volumes:
+            - ./mailpit/data:/data
         ports:
-            - 1025:1025 # smtp server
-            - 8025:8025 # web ui
+            - 8025:8025
+            - 1025:1025
+        environment:
+            MP_MAX_MESSAGES: 5000
+            MP_DATABASE: /data/mailpit.db
+            MP_SMTP_AUTH_ACCEPT_ANY: 1
+            MP_SMTP_AUTH_ALLOW_INSECURE: 1
         networks:
-            - devenv
-
+          - devenv
 networks:
     devenv:
