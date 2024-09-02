@@ -23,7 +23,6 @@ RUN wget https://go.dev/dl/go1.23.0.linux-amd64.tar.gz -O go.tar.gz \
     && echo export PATH=$HOME/go/bin:/usr/local/go/bin:$PATH >> ~/.profile \
     && . ~/.profile \
     && go version \
-    && echo $MP_SENDMAIL_SMTP_ADDR \
     && git clone --depth 1 https://github.com/axllent/mailpit.git \
     && cd mailpit/sendmail \
     && go build -ldflags "-s -w" \
