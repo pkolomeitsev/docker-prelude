@@ -29,11 +29,11 @@ $app->post('/send-email', function (Request $request, Response $response, $args)
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
 
-    $to = 'pong@mailhog.local';
-    $from = 'ping@mailhog.local';
-    $cc = 'pinpongcc@mailhog.local';
-    $subject = 'Hey, I\'m MailHog test! ' . time();
-    $body = 'Hello, MailHog world!';
+    $to = 'pong@local';
+    $from = 'ping@local';
+    $cc = 'pinpongcc@local';
+    $subject = 'Hey, I\'m Mail test! ' . date('Y-m-d h:i:s', time());
+    $body = '<p style="font-family: Arial, Helvetica, sans-serif">Hello <i>World!</i></p>';
 
     # from PHP 7.2+ compatible
     $headers = [
@@ -47,7 +47,7 @@ $app->post('/send-email', function (Request $request, Response $response, $args)
     sleep(1); // anti-DDos :)
 
     $response->getBody()->write((mail($to, $subject, $body, $headers))
-        ? json_encode(['success' => 200, 'msg' => 'Test e-mail message was successfully send'])
+        ? json_encode(['success' => 200, 'msg' => 'Test e-mail message has been successfully sent'])
         : json_encode(['error' => 500, 'msg' => "Send test e-mail message failed!"])
     );
 
