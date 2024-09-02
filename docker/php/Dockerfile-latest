@@ -1,15 +1,5 @@
 FROM php:8.3-fpm
 
-# install sudo, create a non-sudo user
-ARG UID
-ARG GID
-ARG USERNAME=phpdev
-RUN apt update \
-    && apt install -y sudo \
-    && addgroup --gid $GID $USERNAME \
-    && adduser --uid $UID --gid $GID --disabled-password --gecos "" $USERNAME \
-    && echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-
 RUN apt update && apt install -y wget zlib1g-dev g++ git libicu-dev zip libzip-dev  \
     libfreetype-dev libjpeg62-turbo-dev libpng-dev
 
@@ -36,6 +26,16 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # install symfony cli
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
 RUN apt install symfony-cli
+
+# install sudo, create a non-sudo user to prevent read-only file properties
+ARG UID
+ARG GID
+ARG USERNAME=phpdev
+RUN apt update \
+    && apt install -y sudo \
+    && addgroup --gid $GID $USERNAME \
+    && adduser --uid $UID --gid $GID --disabled-password --gecos "" $USERNAME \
+    && echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 # set non-sudo user user as the default user
 USER $USERNAME
