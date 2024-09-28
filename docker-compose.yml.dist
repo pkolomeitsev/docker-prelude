@@ -54,6 +54,23 @@ services:
             - host.docker.internal:${HOST_IP:-172.17.0.1}
         networks:
             - prelude
+    php71-service:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile-php71
+            args:
+                # set host user UID and GID, to create non-sudo user
+                UID: ${HOST_UID:-1000}
+                GID: ${HOST_GID:-1000}
+        container_name: prelude-php71-container
+        volumes:
+            - ./apps:/var/www/apps
+            - ./php/configs/php-71.ini:/usr/local/etc/php/php.ini
+            - ./php/configs/xdebug3.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+        extra_hosts:
+            - host.docker.internal:${HOST_IP:-172.17.0.1}
+        networks:
+            - prelude
     # node
     node-service:
         build:
