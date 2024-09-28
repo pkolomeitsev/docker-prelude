@@ -4,7 +4,7 @@ services:
         build:
             context: .
             dockerfile: docker/nginx/Dockerfile
-        container_name: devenv-nginx-container
+        container_name: prelude-nginx-container
         ports:
             - 80:80
             - 443:443
@@ -16,7 +16,7 @@ services:
             - phplatest-service # add PHP services bellow
             - mysql8-service
         networks:
-            - devenv
+            - prelude
     # php
     phplatest-service:
         build:
@@ -28,7 +28,7 @@ services:
                 GID: ${HOST_GID:-1000}
         environment:
             - MP_SENDMAIL_SMTP_ADDR=${MP_SENDMAIL_SMTP_ADDR}
-        container_name: devenv-phplatest-container
+        container_name: prelude-phplatest-container
         volumes:
             - ./apps:/var/www/apps
             - ./php/configs/php-latest.ini:/usr/local/etc/php/php.ini
@@ -36,7 +36,7 @@ services:
         extra_hosts:
             - host.docker.internal:${HOST_IP:-172.17.0.1}
         networks:
-            - devenv
+            - prelude
     php81-service:
         build:
             context: .
@@ -45,7 +45,7 @@ services:
                 # set host user UID and GID, to create non-sudo user
                 UID: ${HOST_UID:-1000}
                 GID: ${HOST_GID:-1000}
-        container_name: devenv-php81-container
+        container_name: prelude-php81-container
         volumes:
             - ./apps:/var/www/apps
             - ./php/configs/php-81.ini:/usr/local/etc/php/php.ini
@@ -53,13 +53,13 @@ services:
         extra_hosts:
             - host.docker.internal:${HOST_IP:-172.17.0.1}
         networks:
-            - devenv
+            - prelude
     # node
     node-service:
         build:
             context: .
             dockerfile: docker/nodejs/Dockerfile
-        container_name: devenv-node-container
+        container_name: prelude-node-container
         expose:
             - 3000
         ports:
@@ -68,11 +68,11 @@ services:
             - ./apps:/var/www/apps
         working_dir: /var/www/apps
         networks:
-            - devenv
+            - prelude
     # mysql
     mysql8-service:
         image: mysql:8
-        container_name: devenv-mysql8-container
+        container_name: prelude-mysql8-container
         ports:
             - 3306:3306
         volumes:
@@ -83,54 +83,54 @@ services:
             MYSQL_ROOT_PASSWORD: secret
             MYSQL_PASSWORD: secret
         networks:
-            - devenv
+            - prelude
     # redis
     redis-service:
         image: redis:7.0.0
-        container_name: devenv-redis-container
+        container_name: prelude-redis-container
         volumes:
             - ./redis/data:/data
         ports:
             - 6379:6379
         networks:
-            - devenv
+            - prelude
     # redis GUI
     redisinsight:
         depends_on:
             - redis-service
         image: redislabs/redisinsight:latest
-        container_name: devenv-redisinsight
+        container_name: prelude-redisinsight
         ports:
             - 5540:5540
         volumes:
             - ./redis/redisinsight:/data
         networks:
-            - devenv
+            - prelude
     # RabbitMQ
     rabbitmq-service:
         image: rabbitmq:management
-        container_name: devenv-rabbitmq-container
+        container_name: prelude-rabbitmq-container
         ports:
             - 15672:15672
         networks:
-            - devenv
+            - prelude
     # phpMyAdmin
     phpmyadmin:
         depends_on:
             - mysql8-service
         image: phpmyadmin/phpmyadmin
-        container_name: devenv-phpmyadmin
+        container_name: prelude-phpmyadmin
         ports:
             - 8081:80
         environment:
             - PMA_HOST=mysql8-service
             - PMA_PORT=3306
         networks:
-            - devenv
+            - prelude
     # Mailpit
     mailpit:
         image: axllent/mailpit
-        container_name: devenv-mailpit
+        container_name: prelude-mailpit
         restart: unless-stopped
         volumes:
             - ./mailpit/data:/data
@@ -143,6 +143,6 @@ services:
             MP_SMTP_AUTH_ACCEPT_ANY: 1
             MP_SMTP_AUTH_ALLOW_INSECURE: 1
         networks:
-            - devenv
+            - prelude
 networks:
-    devenv:
+    prelude:

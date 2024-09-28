@@ -6,6 +6,8 @@ use App\Helpers\AppHelper;
 
 class ConfigBuilder
 {
+    const APP_NAME = 'Docker Prelude';
+    const REPO_LINK = 'https://github.com/pkolomeitsev/docker-prelude';
 
     /**
      * @param string $dir
@@ -19,8 +21,8 @@ class ConfigBuilder
         $appList = AppHelper::getAppList();
 
         return [
-            'appName' => 'Docker-Dev-Env',
-            'gitHubLink' => 'https://github.com/pkolomeitsev/docker-dev-env',
+            'appName' => self::APP_NAME,
+            'gitHubLink' => self::REPO_LINK,
             'projects' => $projects,
             'appList' => $appList,
             'systemInfo' => [
@@ -66,8 +68,8 @@ class ConfigBuilder
         $appList = AppHelper::getAppListOld();
 
         return [
-            'appName' => 'Docker-Dev-Env',
-            'gitHubLink' => 'https://github.com/pkolomeitsev/docker-dev-env',
+            'appName' => self::APP_NAME,
+            'gitHubLink' => self::REPO_LINK,
             'projects' => $projects,
             'appList' => $appList,
             'php' => [
