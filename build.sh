@@ -26,11 +26,11 @@ help() {
   echo "  -g|--git [subattribute of -s|--site] this will init Git repository in ./apps/<site_name> directory"
   echo "  -h|--host [subattribute of -s|--site] this will update your $ETC_HOSTS on the host machine by adding '$IP <site_name>' string"
   echo ""
-  echo "  --all shortcut of 'docker-compose up -d --build' command"
-  echo "  --run shortcut of 'docker-compose up -d' command"
-  echo "  --down shortcut of 'docker-compose down' command"
-  echo "  --restart shortcut of 'docker-compose restart' command to restart services"
-  echo "  --status shortcut of 'docker-compose ps' command"
+  echo "  --all shortcut of 'docker compose up -d --build' command"
+  echo "  --run shortcut of 'docker compose up -d' command"
+  echo "  --down shortcut of 'docker compose down' command"
+  echo "  --restart shortcut of 'docker compose restart' command to restart services"
+  echo "  --status shortcut of 'docker compose ps' command"
   echo ""
   echo "  --help shows this documentation"
   echo "Examples:"
@@ -45,23 +45,23 @@ while [[ $# -gt 0 ]]; do
     --all)
       export HOST_UID
       export HOST_GID
-      docker-compose up -d --build
+      docker compose up -d --build
       exit 1
       ;;
     --run)
-      docker-compose up -d
+      docker compose up -d
       exit 1
       ;;
     --down)
-      docker-compose down
+      docker compose down
       exit 1
       ;;
     --status)
-      docker-compose ps
+      docker compose ps
       exit 1
       ;;
     --restart)
-      docker-compose restart
+      docker compose restart
       exit 1
       ;;
     -s|--site)
@@ -137,17 +137,17 @@ else
 fi
 
 # restart nginx service
-if docker-compose ps | grep -q nginx
+if docker compose ps | grep -q nginx
 then
   echo "Restart nginx service..."
-  docker-compose restart $NGINX_SERVICE_NAME
+  docker compose restart $NGINX_SERVICE_NAME
 fi
+
+echo "Please visit your site -> http://$SITE/ or https://$SITE/"
 
 tput bold
 echo "Done!";
 tput sgr0
-
-echo "Please visit your site -> http://$SITE/ or https://$SITE/"
 
 #
 # @author p.kolomeitsev@gmail.com
