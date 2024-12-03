@@ -73,7 +73,7 @@ nginx
 -----
 ```bash
 # nginx container SSH
-docker exec -it devenv-nginx-container /bin/sh
+docker exec -it prelude-nginx-container /bin/sh
 # restart nginx service 
 docker-compose restart nginx-service
 # rebuild nginx service to update SSL keys
@@ -85,7 +85,7 @@ php
 ---
 ```bash
 # php container SSH
-docker exec -it devenv-phplatest-container bash
+docker exec -it prelude-phplatest-container bash
 ```
 **php.ini** settings update in `./php/configs/php-latest.ini` file:
 ```
