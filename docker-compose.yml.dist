@@ -128,7 +128,7 @@ services:
         image: rabbitmq:management
         container_name: prelude-rabbitmq-container
         ports:
-            - 15672:15672
+            - 5672:5672
         networks:
             - prelude
     # phpMyAdmin
@@ -142,6 +142,7 @@ services:
         environment:
             - PMA_HOST=mysql8-service
             - PMA_PORT=3306
+            - UPLOAD_LIMIT=5G
         networks:
             - prelude
     # Mailpit
