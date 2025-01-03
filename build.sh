@@ -31,6 +31,7 @@ help() {
   echo "  --down shortcut of 'docker compose down' command"
   echo "  --restart shortcut of 'docker compose restart' command to restart services"
   echo "  --status shortcut of 'docker compose ps' command"
+  echo "  --build-no-cache shortcut of 'docker compose build --no-cache' command"
   echo ""
   echo "  --help shows this documentation"
   echo "Examples:"
@@ -62,6 +63,13 @@ while [[ $# -gt 0 ]]; do
       ;;
     --restart)
       docker compose restart
+      exit 1
+      ;;
+    --build-no-cache)
+      export HOST_UID
+      export HOST_GID
+      docker compose down
+      docker compose build --no-cache && docker compose up -d
       exit 1
       ;;
     -s|--site)
