@@ -28,7 +28,7 @@ help() {
   echo ""
   echo "  --all shortcut of 'docker compose up -d --build' command"
   echo "  --run shortcut of 'docker compose up -d' command"
-  echo "  --down shortcut of 'docker compose down' command"
+  echo "  --down shortcut of 'docker compose down --remove-orphans' command"
   echo "  --restart shortcut of 'docker compose restart' command to restart services"
   echo "  --status shortcut of 'docker compose ps' command"
   echo "  --build-no-cache shortcut of 'docker compose build --no-cache' command"
@@ -54,7 +54,7 @@ while [[ $# -gt 0 ]]; do
       exit 1
       ;;
     --down)
-      docker compose down
+      docker compose down --remove-orphans
       exit 1
       ;;
     --status)
