@@ -5,7 +5,7 @@ RUN apt update && apt install -y wget zlib1g-dev g++ git libicu-dev zip libzip-d
 
 # php extentions
 ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
-RUN install-php-extensions intl opcache pdo pdo_mysql zip exif gd apcu xdebug amqp
+RUN install-php-extensions intl opcache pdo pdo_mysql mysqli zip exif gd apcu xdebug amqp
 
 # install Mailpit integration
 RUN wget https://go.dev/dl/go1.23.0.linux-amd64.tar.gz -O go.tar.gz \
@@ -27,7 +27,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
 RUN apt install symfony-cli
 
-# install sudo, create a non-sudo user to prevent read-only file properties
+# install sudo, create a non-sudo user to prevent read-only file property
 ARG UID
 ARG GID
 ARG USERNAME=phpdev71
