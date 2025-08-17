@@ -43,6 +43,7 @@ class ConfigBuilder
                         'clientVersion' => $mysqlInfo['CLIENT_VERSION'],
                         'connectionStatus' => $mysqlInfo['CONNECTION_STATUS'],
                         'info' => $mysqlInfo['SERVER_INFO'],
+                        'dsn' => $mysqlInfo['DSN'],
                     ]
                 ],
                 'nginx' => [

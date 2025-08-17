@@ -13,12 +13,13 @@ class AppHelper
     {
         $mysqlService = 'mysql8-service';
         $port = 3306;
-        $conn = new PDO(sprintf('mysql:host=%s;port=%s', $mysqlService, $port), 'root', 'secret');
+        $dsn = sprintf('mysql:host=%s;port=%s', $mysqlService, $port);
+        $conn = new PDO($dsn, 'root', 'secret');
         $attributes = [
-            "CLIENT_VERSION",
-            "CONNECTION_STATUS",
-            "SERVER_INFO",
-            "SERVER_VERSION",
+            'CLIENT_VERSION',
+            'CONNECTION_STATUS',
+            'SERVER_INFO',
+            'SERVER_VERSION',
         ];
         $summary = [];
         foreach ($attributes as $attr) {
@@ -26,6 +27,7 @@ class AppHelper
             $summary [$attr] = $conn->getAttribute(constant($constant));
         }
 
+        $summary['DSN'] = $dsn;
         return $summary;
     }
 
