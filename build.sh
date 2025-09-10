@@ -160,6 +160,6 @@ tput sgr0
 #
 # @author p.kolomeitsev@gmail.com
 # @site https://pkolomeitsev.blogspot.com
-# @github https://github.com/pkolomeitsev/docker-dev-env
+# @github https://github.com/pkolomeitsev/docker-prelude
 #
 
