@@ -1,10 +1,12 @@
 services:
+    #
     # nginx
+    #
     nginx-service:
+        container_name: prelude-nginx-container
         build:
             context: .
             dockerfile: docker/nginx/Dockerfile
-        container_name: prelude-nginx-container
         ports:
             - 80:80
             - 443:443
@@ -17,8 +19,11 @@ services:
             - mysql8-service
         networks:
             - prelude
+    #
     # php
+    #
     phplatest-service:
+        container_name: prelude-phplatest-container
         build:
             context: .
             dockerfile: docker/php/Dockerfile-latest
@@ -28,7 +33,6 @@ services:
                 GID: ${HOST_GID:-1000}
         environment:
             - MP_SENDMAIL_SMTP_ADDR=${MP_SENDMAIL_SMTP_ADDR}
-        container_name: prelude-phplatest-container
         volumes:
             - ./apps:/var/www/apps
             - ./php/configs/php-latest.ini:/usr/local/etc/php/php.ini
@@ -38,6 +42,7 @@ services:
         networks:
             - prelude
     php81-service:
+        container_name: prelude-php81-container
         build:
             context: .
             dockerfile: docker/php/Dockerfile-php81
@@ -45,7 +50,6 @@ services:
                 # set host user UID and GID, to create non-sudo user
                 UID: ${HOST_UID:-1000}
                 GID: ${HOST_GID:-1000}
-        container_name: prelude-php81-container
         volumes:
             - ./apps:/var/www/apps
             - ./php/configs/php-81.ini:/usr/local/etc/php/php.ini
@@ -55,6 +59,7 @@ services:
         networks:
             - prelude
     php71-service:
+        container_name: prelude-php71-container
         build:
             context: .
             dockerfile: docker/php/Dockerfile-php71
@@ -62,21 +67,23 @@ services:
                 # set host user UID and GID, to create non-sudo user
                 UID: ${HOST_UID:-1000}
                 GID: ${HOST_GID:-1000}
-        container_name: prelude-php71-container
         volumes:
             - ./apps:/var/www/apps
             - ./php/configs/php-71.ini:/usr/local/etc/php/php.ini
-            - ./php/configs/xdebug3.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+            - ./php/configs/xdebug2.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
         extra_hosts:
             - host.docker.internal:${HOST_IP:-172.17.0.1}
         networks:
             - prelude
+
+    #
     # node
+    #
     node-service:
+        container_name: prelude-node-container
         build:
             context: .
             dockerfile: docker/nodejs/Dockerfile
-        container_name: prelude-node-container
         expose:
             - 3000
         ports:
@@ -86,10 +93,12 @@ services:
         working_dir: /var/www/apps
         networks:
             - prelude
+    #
     # mysql
+    #
     mysql8-service:
-        image: mysql:8
         container_name: prelude-mysql8-container
+        image: mysql:8
         ports:
             - 3306:3306
         volumes:
@@ -101,7 +110,9 @@ services:
             MYSQL_PASSWORD: secret
         networks:
             - prelude
+    #
     # redis
+    #
     redis-service:
         image: redis:7.0.0
         container_name: prelude-redis-container
@@ -111,7 +122,9 @@ services:
             - 6379:6379
         networks:
             - prelude
+    #
     # redis GUI
+    #
     redisinsight:
         depends_on:
             - redis-service
@@ -123,15 +136,19 @@ services:
             - ./redis/redisinsight:/data
         networks:
             - prelude
+    #
     # RabbitMQ
+    #
     rabbitmq-service:
         image: rabbitmq:management
         container_name: prelude-rabbitmq-container
         ports:
-            - 5672:5672
+            - 15672:15672 # 5672:5672 some times not working
         networks:
             - prelude
+    #
     # phpMyAdmin
+    #
     phpmyadmin:
         depends_on:
             - mysql8-service
@@ -145,7 +162,9 @@ services:
             - UPLOAD_LIMIT=5G
         networks:
             - prelude
+    #
     # Mailpit
+    #
     mailpit:
         image: axllent/mailpit
         container_name: prelude-mailpit
