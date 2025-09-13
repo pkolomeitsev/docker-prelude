@@ -81,6 +81,8 @@ docker-compose build --no-cache nginx-service
 ```
 > :warning: Please take care about nginx host **.conf** files as usually they contain errors and service just can't start
 
+> :warning: Common issue is that nginx could not find host in upstream, because of PHP docker service with that "name" is not running 
+
 php
 ---
 ```bash
