@@ -135,6 +135,13 @@ browser extension.
      - [Zero-configuration debugging](https://www.jetbrains.com/help/phpstorm/2023.3/zero-configuration-debugging.html?php.debugging.zero_configuration)
      - [Profiling with Xdebug](https://www.jetbrains.com/help/phpstorm/2023.3/profiling-with-xdebug.html)
 
+Install JS packages by Node.js docker container
+--------
+```
+docker-compose run node-service /bin/sh -c 'cd mysite.lan && yarn install'
+```
+Where "mysite.lan" is project working directory (see: /var/www/apps/mysite.lan)
+
 Well done.
 
 License
