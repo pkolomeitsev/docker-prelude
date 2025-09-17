@@ -1,6 +1,6 @@
 services:
     #
-    # nginx
+    # NGINX
     #
     nginx-service:
         container_name: prelude-nginx-container
@@ -20,7 +20,7 @@ services:
         networks:
             - prelude
     #
-    # php
+    # PHP
     #
     phplatest-service:
         container_name: prelude-phplatest-container
@@ -77,7 +77,7 @@ services:
             - prelude
 
     #
-    # node
+    # Node.js
     #
     node-service:
         container_name: prelude-node-container
@@ -94,7 +94,7 @@ services:
         networks:
             - prelude
     #
-    # mysql
+    # MySQL
     #
     mysql8-service:
         container_name: prelude-mysql8-container
@@ -111,7 +111,41 @@ services:
         networks:
             - prelude
     #
-    # redis
+    # PostgreSQL
+    #
+    postgres-service:
+        image: postgres:15-alpine
+        container_name: prelude-postgres-container
+        restart: unless-stopped
+        environment:
+            PGDATA: /var/lib/postgresql/data/prelude
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+        ports:
+            - 5432:5432
+        volumes:
+            - ./pgsql:/var/lib/postgresql/data
+        networks:
+            - prelude
+    #
+    # PGAdmin
+    #
+    pgadmin-service:
+        image: dpage/pgadmin4
+        container_name: prelude-pgadmin4-container
+        restart: always
+        ports:
+            - 8888:80
+        environment:
+            PGADMIN_DEFAULT_EMAIL: pgadmin@pgadmin.lan
+            PGADMIN_DEFAULT_PASSWORD: pgadmin
+        user: '$UID:$GID'
+        volumes:
+            - ./pgadmin:/var/lib/pgadmin
+        networks:
+            - prelude
+    #
+    # Redis
     #
     redis-service:
         image: redis:7.0.0
@@ -123,7 +157,7 @@ services:
         networks:
             - prelude
     #
-    # redis GUI
+    # Redis GUI
     #
     redisinsight:
         depends_on:

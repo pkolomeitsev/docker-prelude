@@ -62,6 +62,10 @@ class AppHelper
             'rabbitMQ' => [
                 'title' => 'Rabbit MQ',
                 'url' => 'http://localhost:15672/'
+            ],
+            'pgAdmin' => [
+                'title' => '',
+                'url' => 'http://localhost:8888/'
             ]
         ];
     }
