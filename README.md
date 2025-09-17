@@ -10,6 +10,8 @@ Build the application
 ```bash
 # 1. Build all docker services
 ./build.sh --all 
+  # Check docker logs
+  docker compose logs -f
 
 # 2. Check the status
 ./build.sh --status
