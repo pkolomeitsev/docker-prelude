@@ -2,7 +2,7 @@ Docker development environment (PHP, MySQL, NGINX)
 ==================================================
 
 #### Installation process
-Copy and rename `docker-compose.yml.dist` to `docker-compose.yml` and setup you Docker dependencies:
+Copy and rename `docker-compose.yml.dist` to `docker-compose.yml` and setup your Docker dependencies:
 ```bash
 cp docker-compose.yml.dist docker-compose.yml
 ```
@@ -37,7 +37,7 @@ Project structure
 ----------------
 ```
 apps/
---/default <-- admin panal dir
+--/default <-- admin panel dir
 --/mysite.local <-- custom site dir
 
 nginx/
